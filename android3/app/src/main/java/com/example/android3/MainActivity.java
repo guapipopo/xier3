@@ -91,12 +91,10 @@ private ActivityMainBinding mainBinding;
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1&&resultCode==2){
           int num=data.getIntExtra("delete",0);
+          boolean state=data.getBooleanExtra("delete2",true);
           Log.e("a", "onActivityResult: "+num );
 
-            CheckBox checkBox = (CheckBox) LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_detail, null).findViewById(R.id.detail_ison);
-
-
-                 if(checkBox.isChecked()) {
+            if(state) {
 
                  }else {
                      mData.remove(num);

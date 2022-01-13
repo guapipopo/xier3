@@ -27,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     private int myPosition;
     private ActivityDetailBinding detailBinding;
     private itembean item;
+    private boolean myState;
 
 
     @Override
@@ -35,18 +36,23 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         detailBinding=  DataBindingUtil.setContentView(this,R.layout.activity_detail);
 
-
         detailBinding.detailIson.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Toast.makeText( DetailActivity.this, b?"已关注":"已取关", Toast.LENGTH_SHORT).show();
                 if(!b){
                     detailBinding.detailFan.setText("粉丝数:99");
+                    myState=false;
+                    Log.e("a", "onCheckedChanged: false");
 
                 }else {
                     detailBinding.detailFan.setText("粉丝数:100");
+                    myState=true;
                 }
-
+                Intent intent=new Intent();
+                intent.putExtra("delete",myPosition);
+                intent.putExtra("delete2",myState);
+                setResult(2,intent);
 
 
 
