@@ -42,11 +42,14 @@ public class DetailActivity extends AppCompatActivity {
                 Toast.makeText( DetailActivity.this, b?"已关注":"已取关", Toast.LENGTH_SHORT).show();
                 if(!b){
                     detailBinding.detailFan.setText("粉丝数:99");
-                    Intent intent2=new Intent();
-                    intent2.putExtra("delete",myPosition);
-                    setResult(2,intent2);
 
+                }else {
+                    detailBinding.detailFan.setText("粉丝数:100");
                 }
+
+
+
+
             }
         });
 

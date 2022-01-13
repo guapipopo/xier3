@@ -12,7 +12,10 @@ import android.os.Bundle;
 
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -88,11 +91,18 @@ private ActivityMainBinding mainBinding;
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1&&resultCode==2){
           int num=data.getIntExtra("delete",0);
-            Log.e("a", "onActivityResult: "+num );
-          mData.remove(num);
-          adapter.notifyDataSetChanged();
-          adapter2.notifyDataSetChanged();
+          Log.e("a", "onActivityResult: "+num );
 
+            CheckBox checkBox = (CheckBox) LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_detail, null).findViewById(R.id.detail_ison);
+
+
+                 if(checkBox.isChecked()) {
+
+                 }else {
+                     mData.remove(num);
+                     adapter.notifyDataSetChanged();
+                     adapter2.notifyDataSetChanged();
+                 }
         }
     }
 }
